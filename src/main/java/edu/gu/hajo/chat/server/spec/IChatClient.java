@@ -14,5 +14,5 @@ import edu.gu.hajo.chat.server.core.User;
  */
 public interface IChatClient extends Remote {
 
-	public User login() throws RemoteException, NotBoundException;
+	public User login();
 }
