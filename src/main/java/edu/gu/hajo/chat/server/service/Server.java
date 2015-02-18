@@ -7,6 +7,7 @@ import edu.gu.hajo.chat.server.spec.IPeer;
 import edu.gu.hajo.chat.server.spec.IChatServer;
 import edu.gu.hajo.chat.server.core.User;
 import edu.gu.hajo.chat.server.spec.IMessage;
+
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,14 +38,40 @@ public class Server implements IChatServer {
     }
 
     // ------- IServer ---------------------------------------------
+
     @Override
     public synchronized String ping() throws RemoteException {
         LOG.log(Level.INFO, "Pinged!");
         return Constants.SERVER_PING_MESSAGE;
     }
-    
 
-    // --------- Privates -----------
-    // Clients alive?
-    private final TimerTask pinger = null;
+	@Override
+	public void connectClient(IChatClient client) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void disconnectClient(IChatClient client) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void broadcast(IMessage message) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IPeer lookUp(String user) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	// --------- Privates -----------
+	// Clients alive?
+	private final TimerTask pinger = null;
+
 }

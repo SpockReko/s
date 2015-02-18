@@ -12,5 +12,15 @@ import java.rmi.RemoteException;
 public interface IChatServer extends Remote {
 
     // Utility
+
+    
+    // Utility
     public String ping() throws RemoteException;
+    public void connectClient(IChatClient client) throws RemoteException;
+    public void disconnectClient(IChatClient client) throws RemoteException;
+    public void broadcast(IMessage message) throws RemoteException;
+    public IPeer lookUp(String user) throws RemoteException;
+    
+    /* testing only */
+
 }

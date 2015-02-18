@@ -1,6 +1,8 @@
 package edu.gu.hajo.chat.server.spec;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
 
 /**
  * One clients view of another (peer2peer)
@@ -10,7 +12,6 @@ import java.rmi.Remote;
  */
 public interface IPeer extends Remote {
 	
-	public void Download();
-	
-	public void cancel();
+	public List<String> getUploads() throws RemoteException;
+	public byte [] uploadFile(String filename) throws RemoteException;
 }
