@@ -8,6 +8,7 @@ import edu.gu.hajo.chat.server.spec.IChatServer;
 import edu.gu.hajo.chat.server.core.User;
 import edu.gu.hajo.chat.server.spec.IMessage;
 
+
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,40 +32,48 @@ public class Server implements IChatServer {
     private static final Logger LOG = Logger.getLogger(Server.class.getName());
     private static final int PING_DELAY = 3000;
 
-    private final Chat chat;
-
+    private final Map<String, IChatClient> connectedClients = new HashMap<>();
+    private Chat chat;
+    
     public Server(Chat chat) {
         this.chat = chat;
     }
 
     // ------- IServer ---------------------------------------------
 
+    
+    // this gives an pling in the server teminal and sends "server alive"
+    // Is for TestServer in Client project.
     @Override
     public synchronized String ping() throws RemoteException {
         LOG.log(Level.INFO, "Pinged!");
         return Constants.SERVER_PING_MESSAGE;
     }
 
+    // Connect the client to the Chat
 	@Override
 	public void connectClient(IChatClient client) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
+	// Disconnect the client from the Chat
 	@Override
 	public void disconnectClient(IChatClient client) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
+	// Take the message and sends it to all connected Clients.
 	@Override
 	public void broadcast(IMessage message) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
+	// Search for an Client to be a Peer
 	@Override
-	public IPeer lookUp(String user) throws RemoteException {
+	public IPeer searchFor(String user) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -72,6 +81,6 @@ public class Server implements IChatServer {
 	
 	// --------- Privates -----------
 	// Clients alive?
-	private final TimerTask pinger = null;
+	private final TimerTask pinger = null; //TODO
 
 }
